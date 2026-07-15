@@ -100,11 +100,10 @@ ALTER TABLE public.suppliers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.assets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.work_orders ENABLE ROW LEVEL SECURITY;
 
--- Criação de Políticas Públicas Simplificadas (qualquer pessoa com a chave anon lê e grava)
--- Em produção, substitua "true" por validações de autenticação como "auth.role() = 'authenticated'"
-CREATE POLICY "Acesso público total para warehouses" ON public.warehouses FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Acesso público total para parts" ON public.parts FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Acesso público total para movements" ON public.movements FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Acesso público total para suppliers" ON public.suppliers FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Acesso público total para assets" ON public.assets FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Acesso público total para work_orders" ON public.work_orders FOR ALL USING (true) WITH CHECK (true);
+-- Criação de Políticas de Segurança para o ambiente corporativo compartilhado (usuários autenticados)
+CREATE POLICY "Acesso compartilhado para warehouses" ON public.warehouses FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Acesso compartilhado para parts" ON public.parts FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Acesso compartilhado para movements" ON public.movements FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Acesso compartilhado para suppliers" ON public.suppliers FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Acesso compartilhado para assets" ON public.assets FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Acesso compartilhado para work_orders" ON public.work_orders FOR ALL TO authenticated USING (true) WITH CHECK (true);
