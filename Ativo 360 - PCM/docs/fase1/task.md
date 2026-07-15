@@ -1,0 +1,46 @@
+# Task List - ATIVO360 Stock Control System
+
+- `[x]` Criar estrutura de pastas do projeto (`Ativo 360 - PCM/src/css`, `Ativo 360 - PCM/src/js`)
+- `[/]` Implementar módulo de dados (`Ativo 360 - PCM/src/js/data.js`)
+  - `[x]` Estrutura de dados padrão (Mock Data)
+  - `[x]` Lógica de leitura/escrita no LocalStorage
+  - `[x]` Operações CRUD para Peças, Armazéns, Fornecedores
+  - `[x]` Lógica de movimentações de estoque (Entrada, Saída, Transferência, Ajuste) com validações
+  - `[ ]` Integrar chamadas assíncronas com o módulo Supabase
+- `[/]` Implementar estilos CSS (`Ativo 360 - PCM/src/css/styles.css`)
+  - `[x]` Configuração de variáveis e paleta de cores ATIVO360 (Midnight Blue, Ciano, Neon Blue/Green)
+  - `[x]` Layout base (sidebar colapsável, cabeçalho, grid responsivo)
+  - `[x]` Design premium (glassmorphism, transições suaves, sombras brilhantes)
+  - `[x]` Customização de barras de progresso, alertas e botões
+  - `[ ]` Estilização da Tela de Login Glassmorphic e provedores sociais baseada na referência
+- `[/]` Criar interface HTML (`Ativo 360 - PCM/index.html`)
+  - `[x]` Sidebar de navegação e Header
+  - `[x]` Visualização do Dashboard (cards de métricas, alertas de estoque baixo, containers de gráficos)
+  - `[x]` Visualização do Catálogo de Peças (filtros, busca, tabela/grid com indicadores de estoque)
+  - `[x]` Visualização de Armazéns (cards detalhados com totalizadores)
+  - `[x]` Visualização de Movimentações (tabela de histórico com tags coloridas)
+  - `[x]` Módulo de Manutenção / Ordens de Trabalho (vinculação de consumo)
+  - `[x]` Visualização de Fornecedores e Configurações (reset, backup)
+  - `[x]` Modais (Adicionar/Editar Peça, Registrar Movimentação, Adicionar Armazém, Consumir Peça na OS)
+  - `[ ]` Adicionar estrutura da Tela de Login e botão de logout no painel
+  - `[ ]` Importar script cliente do Supabase via CDN
+- `[x]` Implementar scripts de gráficos (`Ativo 360 - PCM/src/js/charts.js`)
+  - `[x]` Gráfico de rosca para distribuição por categoria
+  - `[x]` Gráfico de barras/linha para fluxo mensal de Entradas vs Saídas
+  - `[x]` Funções de destruição/recriação ao atualizar dados
+- `[/]` Implementar script controlador principal (`Ativo 360 - PCM/src/js/app.js`)
+  - `[x]` Navegação de abas SPA
+  - `[x]` Manipulação de formulários de modais e submissões
+  - `[x]` Controle de Toasts de Notificação
+  - `[x]` Implementação de buscas e filtros de tabela
+  - `[x]` Lógica de exportação e importação de JSON
+  - `[ ]` Lógica de login, cadastro, logout e proteção de rotas
+- `[ ]` Criar arquivo de credenciais (`Ativo 360 - PCM/src/js/config.js`)
+- `[ ]` Criar cliente integrador do banco de dados (`Ativo 360 - PCM/src/js/supabase.js`)
+- `[ ]` Criar script SQL de banco de dados (`Ativo 360 - PCM/schema.sql`)
+- `[ ]` Verificação e Validação
+  - `[ ]` Testar fluxo de autenticação Supabase (com login e cadastro)
+  - `[ ]` Validar persistência remota no banco de dados e RLS
+  - `[ ]` Validar regras de bloqueio de estoque insuficiente
+  - `[ ]` Validar fluxo de consumo em Ordens de Serviço
+- `[ ]` Criar Walkthrough (`walkthrough.md`)
