@@ -678,27 +678,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       lucide.createIcons();
     });
 
-    // Alterna entre modo Entrar e Registrar
-    elements.linkRegister.addEventListener('click', (e) => {
-      e.preventDefault();
-      isRegisterMode = !isRegisterMode;
+    // Alterna entre modo Entrar e Registrar (usando função auxiliar para evitar duplicação de listeners)
+    function toggleRegisterMode(mode) {
+      isRegisterMode = mode;
       if (isRegisterMode) {
         elements.loginFormTitle.textContent = 'Registrar conta';
         elements.btnLoginText.textContent = 'Criar Conta';
         elements.loginFooterText.innerHTML = 'Já possui uma conta? <a href="#" id="link-login-toggle">Conecte-se</a>';
-        
-        document.getElementById('link-login-toggle').onclick = (ev) => {
-          ev.preventDefault();
-          elements.linkRegister.click();
-        };
       } else {
         elements.loginFormTitle.textContent = 'Login';
         elements.btnLoginText.textContent = 'Entrar';
         elements.loginFooterText.innerHTML = 'Não tem uma conta ainda? <a href="#" id="link-register">Registre-se grátis</a>';
-        
-        // Re-vincula listener
-        elements.linkRegister = document.getElementById('link-register');
-        setupAuthListeners();
+      }
+      lucide.createIcons();
+    }
+
+    elements.loginFooterText.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && (target.id === 'link-register' || target.id === 'link-login-toggle')) {
+        e.preventDefault();
+        toggleRegisterMode(!isRegisterMode);
       }
     });
 
@@ -717,7 +716,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (res.success) {
             showToast('Cadastro realizado!', 'Verifique seu e-mail para confirmar a conta.', 'success');
             // Retorna ao login
-            elements.linkRegister.click();
+            toggleRegisterMode(false);
           } else {
             showToast('Erro ao cadastrar', res.error, 'error');
           }
